@@ -1,1 +1,552 @@
-/* Add styles here */
+
+    /* --- Configuración Base y Reseteo --- */
+    :root {
+        --color-primario: #0a4a5a; /* Un verde azulado profesional */
+        --color-acento: #1abc9c;   /* Un verde menta fresco */
+        --color-texto: #333;
+        --color-fondo: #f9f9f9;
+        --color-tarjeta: #ffffff;
+        --sombra-tarjeta: 0 4px 12px rgba(0, 0, 0, 0.05);
+        --sombra-tarjeta-hover: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        font-family: 'Poppins', sans-serif;
+        background-color: var(--color-fondo);
+        color: var(--color-texto);
+        line-height: 1.7;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    a {
+        color: var(--color-acento);
+        text-decoration: none;
+    }
+    /* Style buttons to look like links if needed, or style links like buttons */
+    button.link-style {
+         background: none;
+         border: none;
+         padding: 0;
+         font: inherit;
+         color: var(--color-acento); /* Or inherit */
+         cursor: pointer;
+         text-decoration: underline; /* Optional */
+    }
+
+
+    h1, h2, h3 {
+        font-weight: 600;
+        color: var(--color-primario);
+    }
+
+    /* Clase de utilidad para accesibilidad (Ocultar visualmente) */
+    .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border-width: 0;
+    }
+
+    /* --- Contenedor Principal --- */
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    /* --- Encabezado y Navegación --- */
+    .site-header {
+        background-color: var(--color-tarjeta);
+        padding: 20px 0;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        text-align: center;
+    }
+
+    .site-header h1 {
+        font-size: 3rem; /* Más grande */
+        font-weight: 700; /* Más grueso */
+        margin-bottom: 10px;
+        /* Efecto de texto degradado para un look espectacular */
+        background: linear-gradient(45deg, var(--color-primario), var(--color-acento));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-fill-color: transparent;
+        /* Fallback para navegadores que no lo soporten */
+        color: var(--color-primario);
+    }
+
+    .site-nav {
+        background-color: var(--color-primario);
+        padding: 10px 0;
+        /* --- INICIO: Código para menú fijo --- */
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        /* --- FIN: Código para menú fijo --- */
+    }
+    
+    /* Contenedor Flex para la navegación */
+    .nav-container-flex {
+        display: flex;
+        justify-content: center; /* Centrado en desktop */
+        align-items: center;
+        width: 100%;
+        position: relative;
+    }
+
+    .site-nav ul {
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+    }
+
+    .site-nav a {
+        color: #ffffff;
+        font-weight: 600;
+        text-decoration: none;
+        padding: 5px 10px;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+    }
+
+    .site-nav a:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+    
+    /* --- INICIO: MEJORA Menú Móvil (Hamburguesa) --- */
+    
+    /* Ocultar en desktop */
+    .mobile-nav-toggle { display: none; }
+    .nav-brand-mobile { display: none; }
+
+    /* --- FIN: MEJORA Menú Móvil --- */
+
+
+    /* --- Sección de Introducción --- */
+    .intro-section {
+        background-color: var(--color-tarjeta);
+        text-align: center;
+        padding: 50px 20px;
+        margin: 30px auto;
+        max-width: 1200px;
+        border-radius: 8px;
+        box-shadow: var(--sombra-tarjeta);
+    }
+
+    /* Espacio para la imagen de perfil/logo en la sección de introducción (RECTÁNGULO VERTICAL GRANDE) */
+    .profile-image-placeholder {
+        width: 250px;  /* Más grande */
+        height: 375px; /* Proporcionalmente más grande */
+        background-color: #e0e0e0; /* Color de fondo si la imagen no carga */
+        border-radius: 8px; /* Ligeras esquinas redondeadas */
+        margin: 0 auto 30px auto; /* Centrar y añadir más espacio inferior */
+        display: flex; /* Para centrar el contenido (si no hay imagen) */
+        align-items: center;
+        justify-content: center;
+        color: #999; /* Color de texto del placeholder */
+        font-style: italic;
+        overflow: hidden; /* Asegura que la imagen dentro no se desborde */
+    }
+
+    .profile-image-placeholder img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Cubre el espacio sin distorsionar la imagen */
+        border-radius: 8px; /* Las esquinas de la imagen coinciden con el contenedor */
+    }
+
+
+    .intro-section h2 {
+        font-size: 1.8rem;
+        margin-bottom: 10px;
+    }
+
+    .intro-section .subtitle {
+        font-size: 1.1rem;
+        font-weight: 300;
+        color: var(--color-acento);
+        margin-bottom: 20px;
+    }
+
+    .intro-section p {
+        max-width: 800px;
+        margin: 0 auto;
+        font-size: 1.05rem;
+        line-height: 1.8;
+    }
+
+    /* --- NUEVA SECCIÓN DE FILOSOFÍA --- */
+    .philosophy-section {
+        padding: 40px 0;
+        text-align: center;
+    }
+
+    .philosophy-section h2 {
+        font-size: 2.5rem; /* Más grande */
+        font-weight: 700;
+        margin-bottom: 20px;
+        display: inline-block; /* Para que el borde se ajuste al texto */
+        padding-bottom: 10px;
+        border-bottom: 3px solid var(--color-acento); /* Subrayado de acento */
+    }
+
+    .philosophy-subtitle {
+        font-size: 1.1rem;
+        max-width: 750px;
+        margin: 0 auto 40px auto;
+        line-height: 1.8;
+        color: var(--color-texto);
+    }
+
+    .philosophy-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 25px;
+    }
+
+    .philosophy-card {
+        background-color: var(--color-tarjeta);
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: var(--sombra-tarjeta);
+        text-align: center;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .philosophy-card:hover {
+        transform: translateY(-8px);
+        box-shadow: var(--sombra-tarjeta-hover);
+    }
+
+    .philosophy-card .icon {
+        width: 50px;
+        height: 50px;
+        stroke: var(--color-acento); /* Color del icono */
+        margin-bottom: 20px;
+    }
+
+    .philosophy-card h3 {
+        font-size: 1.3rem;
+        margin-bottom: 10px;
+    }
+
+    .philosophy-card p {
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+    /* --- FIN DE SECCIÓN DE FILOSOFÍA --- */
+
+
+    /* --- Encabezado de la Galería de Dietas --- */
+    .gallery-header {
+        text-align: center;
+        padding: 40px 20px 20px 20px; /* Padding superior para separar de la sección anterior */
+    }
+
+    .gallery-header h2 {
+        font-size: 2.5rem; /* Más grande */
+        font-weight: 700;
+        margin-bottom: 20px;
+        display: inline-block; /* Para que el borde se ajuste al texto */
+        padding-bottom: 10px;
+        border-bottom: 3px solid var(--color-acento); /* Subrayado de acento */
+    }
+
+    .gallery-header p {
+        font-size: 1.1rem;
+        max-width: 750px;
+        margin: 0 auto 20px auto;
+        line-height: 1.8;
+        color: var(--color-texto);
+    }
+
+
+    /* --- Galería de Dietas --- */
+    #dietas-gallery {
+        padding: 20px 0 40px 0; /* Padding superior reducido para compensar el nuevo encabezado */
+    }
+
+    .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 30px;
+    }
+
+    .diet-card-link {
+        display: block;
+        text-decoration: none;
+        color: inherit;
+        border-radius: 8px;
+        overflow: hidden;
+        background-color: var(--color-tarjeta);
+        box-shadow: var(--sombra-tarjeta);
+        transition: all 0.3s ease-in-out;
+        cursor: pointer; /* Indicar que es clicable */
+    }
+
+    .diet-card-link:hover,
+    .diet-card-link:focus {
+        transform: translateY(-8px);
+        box-shadow: var(--sombra-tarjeta-hover);
+    }
+
+    .diet-card {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+    
+    /* Marcador de posición para la imagen de la tarjeta de dieta. */
+    .card-image-placeholder {
+        height: 200px;
+        background-color: #e0e0e0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #999;
+        font-style: italic;
+    }
+
+    /* Estilo para la imagen de la tarjeta insertada */
+    .card-image {
+        width: 100%;
+        height: 200px;
+        object-fit: cover; /* Asegura que la imagen cubra el espacio sin distorsionarse */
+    }
+
+    .card-content {
+        padding: 25px;
+    }
+
+    .card-content h3 {
+        font-size: 1.4rem;
+        color: var(--color-primario);
+    }
+
+    /* --- Pie de Página --- */
+    .site-footer {
+        text-align: center;
+        padding: 40px 20px;
+        margin-top: 40px;
+        background-color: #333;
+        color: #aaa;
+        font-size: 0.9rem;
+    }
+    
+    /* --- ESTILOS DE LA VENTANA EMERGENTE (MODAL) --- */
+    .modal-overlay {
+        display: none; /* Oculto por defecto */
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.75); /* Fondo oscuro semitransparente */
+        z-index: 2000;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        /* Añadido para animación suave */
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0s linear 0.3s;
+    }
+    .modal-overlay.active {
+        display: flex;
+        opacity: 1;
+        visibility: visible;
+        transition: opacity 0.3s ease, visibility 0s linear 0s;
+    }
+
+    .modal-content {
+        position: relative;
+        background: #ffffff;
+        width: 100%;
+        height: 100%;
+        max-width: 1100px; /* Ancho máximo del contenido */
+        max-height: 90vh; /* Altura máxima */
+        border-radius: 8px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        overflow: hidden; /* Para que el iframe se ajuste a las esquinas redondeadas */
+         /* Añadido para animación */
+        transform: scale(0.9);
+        transition: transform 0.3s ease;
+    }
+    .modal-overlay.active .modal-content {
+        transform: scale(1);
+    }
+
+    .modal-close {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        background: #fff;
+        color: #555;
+        border: none;
+        font-size: 2.5rem;
+        font-weight: bold;
+        line-height: 1;
+        cursor: pointer;
+        padding: 0 5px;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        z-index: 2010;
+        transition: all 0.2s ease;
+    }
+    .modal-close:hover,
+    .modal-close:focus { /* Añadido :focus para accesibilidad */
+        background: #eee;
+        color: #000;
+        outline: 2px solid var(--color-acento);
+    }
+
+    #modal-iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+    }
+    /* --- FIN DE ESTILOS MODAL --- */
+
+
+    /* --- Media Queries para refinamiento --- */
+    
+    /* Móviles */
+    @media (max-width: 767px) {
+        .site-header h1 {
+            font-size: 2.5rem; /* Ajuste responsive */
+        }
+
+        /* --- INICIO: MEJORA Estilos de Navegación Móvil --- */
+        
+        .nav-container-flex {
+            justify-content: space-between; /* Alinea marca y botón */
+        }
+        
+        /* Muestra la marca solo en móvil */
+        .nav-brand-mobile {
+            display: block;
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 1.2rem;
+            text-decoration: none;
+        }
+
+        /* Muestra el botón de hamburguesa */
+        .mobile-nav-toggle {
+            display: block;
+            background: none;
+            border: none;
+            color: white; /* Color de los iconos SVG */
+            cursor: pointer;
+            z-index: 1002; /* Por encima del menú desplegable */
+            padding: 5px;
+        }
+        
+        /* Visibilidad de iconos (menu vs close) */
+        .mobile-nav-toggle[aria-expanded="true"] .icon-menu { display: none; }
+        .mobile-nav-toggle[aria-expanded="false"] .icon-close { display: none; }
+        .mobile-nav-toggle[aria-expanded="true"] .icon-close { display: block; }
+        .mobile-nav-toggle[aria-expanded="false"] .icon-menu { display: block; }
+        
+
+        /* El menú (lista ul) */
+        .site-nav ul {
+            /* Se convierte en un menú desplegable absoluto */
+            position: absolute;
+            top: 100%; /* Justo debajo de la barra de nav */
+            left: 0;
+            right: 0;
+            background-color: var(--color-primario);
+            flex-direction: column;
+            gap: 0; /* Quitar gap para lista apilada */
+            padding: 10px 0;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            
+            /* Oculto por defecto */
+            visibility: hidden;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+        }
+        
+        /* Estado abierto del menú */
+        .site-nav ul.nav-open {
+            visibility: visible;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .site-nav ul li {
+            width: 100%;
+        }
+        
+        /* Estilo de los enlaces en el menú móvil */
+        .site-nav ul a {
+            display: block; /* Ocupan todo el ancho */
+            padding: 15px 20px;
+            text-align: center;
+        }
+        /* --- FIN: MEJORA Estilos de Navegación Móvil --- */
+
+
+        .intro-section {
+            padding: 30px 15px;
+        }
+
+        .intro-section h2 {
+            font-size: 1.5rem;
+        }
+
+        .profile-image-placeholder {
+            width: 150px; /* Reducir un poco en móvil */
+            height: 225px; /* Proporcionalmente más pequeño */
+            margin-bottom: 20px;
+        }
+
+        .philosophy-section h2 {
+            font-size: 2rem; /* Ajuste responsive */
+        }
+
+        .gallery-header h2 {
+            font-size: 2rem; /* Ajuste responsive */
+        }
+
+        .modal-content {
+            max-height: 95vh; /* Ocupar casi toda la pantalla en móvil */
+            padding-top: 45px; /* Dejar espacio para el botón de cerrar */
+        }
+        .modal-close {
+            top: 5px;
+            right: 5px;
+            font-size: 2rem;
+            width: 35px;
+            height: 35px;
+        }
+        #modal-iframe {
+            /* El padding-top en modal-content crea el espacio para el botón */
+            height: calc(100% - 0px); 
+        }
+    }
