@@ -102,7 +102,7 @@ const DietQuiz: React.FC = () => {
                     <button
                       key={oIndex}
                       onClick={() => handleAnswer(qIndex, opt.scores)}
-                      className={`p-3 w-full rounded-lg border-2 text-sm text-left transition-all duration-200 ${answers[qIndex] === opt.scores ? 'bg-corporate-blue text-white border-corporate-blue' : 'bg-transparent border-gray-300 dark:border-gray-600 hover:border-corporate-blue hover:bg-corporate-blue/5'}`}
+                      className={`p-3 w-full text-gray-700 dark:text-gray-300 rounded-lg border-2 text-sm text-left transition-all duration-200 ${answers[qIndex] === opt.scores ? 'bg-corporate-blue text-white border-corporate-blue' : 'bg-transparent border-gray-300 dark:border-gray-600 hover:border-corporate-blue hover:bg-corporate-blue/5'}`}
                     >
                       {opt.text}
                     </button>
